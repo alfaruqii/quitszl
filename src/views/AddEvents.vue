@@ -1,5 +1,5 @@
 <template>
-  <form class="mt-4 w-fit mx-4 sm:mx-auto flex flex-col gap-4">
+  <form class="mt-4 w-fit mx-4 sm:mx-auto flex flex-col gap-4 min-h-screen">
     <p>
       Select the type
     </p>
@@ -50,9 +50,7 @@
 
 <script setup>
 import { computed, reactive } from 'vue';
-import { useStore } from 'vuex';
 import { useMutations } from '../helper';
-import { useCurrentTime } from "../utils/useCurrentTime"
 
 const newEvent = reactive({
   eventType: "",
@@ -60,13 +58,21 @@ const newEvent = reactive({
 })
 
 const { addEvent } = useMutations(["addEvent"])
-const store = useStore()
-console.log(store)
 
 const isFormValid = computed(() => {
   return !newEvent.eventType || !newEvent.habit
 });
 
+function getEventsFromLocalStorage() {
+  const events = localStorage.getItem('eventData');
+  return events ? JSON.parse(events) : [];
+}
+
+function saveEventToLocalStorage(event) {
+  const events = getEventsFromLocalStorage();
+  events.push(event);
+  localStorage.setItem('eventData', JSON.stringify(events));
+}
 
 function submitForm() {
   const options = {
@@ -83,7 +89,17 @@ function submitForm() {
     alert("Please filling the form");
     return;
   }
-  addEvent({ ...newEvent, date: new Date().toLocaleString('en-US', options).replace(/\//g, '-').replace(/,/g, ' ') })
+  const eventObject = {
+    ...newEvent,
+    date: new Date().toLocaleString('en-US', options).replace(/\//g, '-').replace(/,/g, ' '),
+    id: Date.now()
+  };
+
+  // Save to localStorage
+  saveEventToLocalStorage(eventObject);
+
+  // Add event to state (if needed)
+  addEvent(eventObject);
   clearEvent()
 }
 
