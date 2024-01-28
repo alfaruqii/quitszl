@@ -3,6 +3,9 @@ import App from './App.vue'
 import "./index.css"
 import router from './Routes'
 import { createStore } from 'vuex'
+import { OhVueIcon, addIcons } from "oh-vue-icons";
+import { GiBreakingChain, GiTakeMyMoney, MdAccesstime, IoThumbsDown, BiTrash3Fill, BiThreeDotsVertical } from "oh-vue-icons/icons";
+
 
 const store = createStore({
   state() {
@@ -41,6 +44,8 @@ const store = createStore({
 const app = createApp(App)
 app.use(router)
 app.use(store)
+addIcons(GiBreakingChain, GiTakeMyMoney, MdAccesstime, IoThumbsDown, BiTrash3Fill, BiThreeDotsVertical)
+app.component("v-icon", OhVueIcon);
 app.mount('#app')
 
 // Call initializeEvents action when the app starts
