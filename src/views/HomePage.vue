@@ -7,7 +7,7 @@
       <p class="font-medium">
         {{ dataQuote.quote }}
       </p>
-      <p class="text-xs text-gray-501 mt-1.5">
+      <p class="text-xs font-thin text-gray-501 mt-1.5">
         - {{ dataQuote.author }}
       </p>
     </div>

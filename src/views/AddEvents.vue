@@ -54,6 +54,7 @@
 <script setup>
 import { computed, reactive } from 'vue';
 import { useMutations } from '../helper';
+import saveEventToLocalStorage from "../utils/saveToLocalStorage.js"
 
 const newEvent = reactive({
   eventType: "",
@@ -65,17 +66,6 @@ const { addEvent } = useMutations(["addEvent"])
 const isFormValid = computed(() => {
   return !newEvent.eventType || !newEvent.habit
 });
-
-function getEventsFromLocalStorage() {
-  const events = localStorage.getItem('eventData');
-  return events ? JSON.parse(events) : [];
-}
-
-function saveEventToLocalStorage(event) {
-  const events = getEventsFromLocalStorage();
-  events.push(event);
-  localStorage.setItem('eventData', JSON.stringify(events));
-}
 
 function submitForm() {
   const options = {

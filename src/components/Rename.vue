@@ -5,7 +5,7 @@
       <p class="">Rename</p>
     </DisclosureButton>
     <DisclosurePanel as="div" class="px-4 pt-3 pb-3 border-t text-sm">
-      <input type="text" class="border-b border-[#FE6367] outline-none mb-1" v-model="newName.habit" v-on:keydown.stop
+      <input type="text" class="border-b border-[#FE6367] outline-none mb-1 p-1" v-model="newName.habit" v-on:keydown.stop
         placeholder="new name" @keydown.enter="changeName" />
       <div class="flex justify-around gap-2.5 pt-3">
         <button class="rounded bg-gray-200 px-3 py-1.5 hover:bg-gray-300" @click.prevent="changeName"

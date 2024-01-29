@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: sf;
+  src: url('/assets/fonts/sf.woff2');
+}
+
