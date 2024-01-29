@@ -15,10 +15,8 @@
       <p>I commit to quit :</p>
       <div v-for="(event, index) in eventData" v-if="eventData" :key="index"
         class="px-4 pt-4 border shadow rounded-lg bg-white relative">
-        <div class="absolute top-2.5 right-2">
-          <DropDown :id="event.id" />
-        </div>
-        <div class="flex gap-1.5 items-center mb-3 ">
+        <DropDown :event="event" />
+        <div class="flex gap-2 items-center mb-3 ">
           <v-icon class="mb-1"
             :name="event.eventType === 'Money' ? 'gi-take-my-money' : event.eventType === 'Event' ? 'md-accesstime' : 'io-thumbs-down'" />
           <p class="text-lg font-bold capitalize">
@@ -41,7 +39,7 @@
 <script setup>
 import axios from 'axios';
 import { onMounted, reactive } from 'vue';
-import { useState, useMutations } from "../helper.js";
+import { useState } from "../helper.js";
 import Clock from "../components/Clock.vue";
 import DropDown from '../components/DropDown.vue';
 
@@ -71,7 +69,7 @@ function getQuotes() {
   const lastFetchTimestamp = localStorage.getItem('quoteLastFetch');
 
   // Fetch quotes only if last fetch timestamp is not set or a day has passed
-  if (!lastFetchTimestamp || now - lastFetchTimestamp > 24 * 60 * 60 * 1000) {
+  if (!lastFetchTimestamp) {
     axios.get("https://api.quotable.io/quotes/random").then((response) => {
       dataQuote.quote = response.data[0].content;
       dataQuote.author = response.data[0].author;

@@ -43,7 +43,7 @@
       <label for="">
         Habit Name :
       </label>
-      <input type="text" class="border-b-2 border-[#FE6367] ml-3 bg-gray-100 outline-none" v-model="newEvent.habit">
+      <input type="text" class="border-b border-[#FE6367] ml-3 bg-gray-100 outline-none" v-model="newEvent.habit">
     </div>
     <button class="border w-fit px-2 py-1 rounded bg-white" @click.prevent="submitForm" :disabled="isFormValid">
       Complete

@@ -40,10 +40,11 @@ watchEffect(() => {
 });
 
 const svgCircle = computed(() => {
-  // Adjust the radius based on screen size
-  const radius = window.innerWidth < 768 ? 50 : 70; // Smaller radius for mobile
+  const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  const radius = screenWidth < 768 ? 50 : 70; // Choose appropriate values for smaller and larger screens
   const circumference = 2 * Math.PI * radius;
-  const strokeVal = (circumference / 2 / 100) * progressPercentage.value;
+  const divider = screenWidth < 768 ? 70 : 100 // Smaller divider for mobile
+  const strokeVal = (circumference / 2 / divider) * progressPercentage.value;
   const dashArray = `${strokeVal} ${circumference}`;
 
   return `<svg width="100%" height="100%" viewBox="0 0 200 100">
