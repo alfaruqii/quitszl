@@ -24,7 +24,7 @@
           </p>
         </div>
         <div>
-          <Clock :eventStartDate="event.date" />
+          <Clock :eventStartDate="event.date.toString()" />
         </div>
       </div>
     </div>
