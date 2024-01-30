@@ -14,8 +14,6 @@ const props = defineProps({
 });
 
 const startTime = new Date(props.eventStartDate);
-console.log("props eventStartDate : ", props.eventStartDate)
-console.log("startTime : ", startTime)
 const progressPercentage = ref(0);
 const milestoneDays = ref(0);
 const svgStyle = ref({});
@@ -47,10 +45,6 @@ const svgCircle = computed(() => {
   const circumference = 2 * Math.PI * radius;
   const divider = screenWidth < 768 ? 70 : 100 // Smaller divider for mobile
   const strokeVal = (circumference / 2 / divider) * progressPercentage.value;
-  // console.log("circumference : ", circumference)
-  // console.log("divider : ", divider)
-  console.log("progressPercentage : ", progressPercentage.value)
-  console.log("strokeVal : ", strokeVal)
   const dashArray = `${strokeVal} ${circumference}`;
 
   return `<svg width="100%" height="100%" viewBox="0 0 200 100">
