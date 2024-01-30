@@ -4,7 +4,7 @@
       <p class="text-xs text-gray-500">Elapsed Time: </p>
       <p class="text-sm sm:text-md">{{ elapsedTime }}</p>
     </div>
-    <Milestone :eventStartDate="props.eventStartDate" />
+    <Milestone :eventStartDate="startTime.toString()" />
   </div>
 </template>
 
