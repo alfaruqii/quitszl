@@ -5,7 +5,9 @@ Simple web application that can help you to track your bad habit.
 
 ## Screenshots
 
-![App Screenshot](https://res.cloudinary.com/de6icstca/image/upload/v1706605426/faruqi/portfolio/Untitled_design_3_xzrtbl.jpg)
+![App Screenshot](https://res.cloudinary.com/de6icstca/image/upload/v1706605570/faruqi/portfolio/QuitSzel_hl5als.png)
+
+![App Screenshot](https://res.cloudinary.com/de6icstca/image/upload/v1706605570/faruqi/portfolio/QuitSzel_1_gh6cy1.png)
 
 
 ## Tech Stack
@@ -18,3 +20,4 @@ Simple web application that can help you to track your bad habit.
 ## Authors
 
 - [@alfaruqi](https://www.github.com/alfaruqii)
+
