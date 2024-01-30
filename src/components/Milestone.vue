@@ -72,7 +72,7 @@ const calculateMilestoneProgress = () => {
     }
   }
 
-  const progress = ((elapsed - currentMilestone) / (nextMilestone - currentMilestone)) * 100;
+  const progress = nextMilestone !== currentMilestone ? ((elapsed - currentMilestone) / (nextMilestone - currentMilestone)) * 100 : 0;
   progressPercentage.value = Math.min(progress, 100).toFixed(2); // Round to 2 decimal places
 };
 
