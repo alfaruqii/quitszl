@@ -14,6 +14,7 @@ const props = defineProps({
 });
 
 const startTime = new Date(props.eventStartDate);
+console.log("startTime : ", startTime)
 const progressPercentage = ref(0);
 const milestoneDays = ref(0);
 const svgStyle = ref({});
