@@ -38,10 +38,10 @@
 
 <script setup>
 import axios from 'axios';
-import { onMounted, reactive } from 'vue';
+import { defineAsyncComponent, onMounted, reactive } from 'vue';
 import { useState } from "../helper.js";
-import Clock from "../components/Clock.vue";
-import DropDown from '../components/DropDown.vue';
+const Clock = defineAsyncComponent(() => import("../components/Clock.vue"))
+const DropDown = defineAsyncComponent(() => import("../components/DropDown.vue"))
 
 const dataQuote = reactive({ quote: "", author: "" });
 const { eventData } = useState(["eventData"]);

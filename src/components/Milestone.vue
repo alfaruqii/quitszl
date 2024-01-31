@@ -9,9 +9,7 @@
 <script setup>
 import { ref, onMounted, computed, watchEffect } from 'vue';
 
-const props = defineProps({
-  eventStartDate: String
-});
+const props = defineProps(["eventStartDate"]);
 
 const startTime = new Date(props.eventStartDate);
 const progressPercentage = ref(0);

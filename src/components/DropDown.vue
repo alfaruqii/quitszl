@@ -25,8 +25,9 @@
 <script setup>
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import { useMutations } from '../helper';
+import { defineAsyncComponent } from 'vue';
 const { deleteEvent } = useMutations(["deleteEvent"]);
-import Rename from './Rename.vue';
+const Rename = defineAsyncComponent(() => import('./Rename.vue'));
 
 const { event } = defineProps(["event"])
 

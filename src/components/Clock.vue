@@ -9,13 +9,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, defineAsyncComponent } from 'vue';
 import { calculateElapsedTime } from "../utils/elapsedTime.js"
-import Milestone from "./Milestone.vue"
+const Milestone = defineAsyncComponent(() => import("./Milestone.vue"))
 
-const props = defineProps({
-  eventStartDate: String
-});
+const props = defineProps(["eventStartDate"]);
 const elapsedTime = ref('');
 
 const startTime = new Date(props.eventStartDate);
