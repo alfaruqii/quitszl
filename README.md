@@ -1,8 +1,23 @@
-# Vue 3 + Vite
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# 🧠 Quitszl
 
-## Recommended IDE Setup
+Simple web application that can help you to track your bad habit. 
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-# quitszl
+## Screenshots
+
+![App Screenshot](https://res.cloudinary.com/de6icstca/image/upload/v1706605570/faruqi/portfolio/QuitSzel_hl5als.png)
+
+![App Screenshot](https://res.cloudinary.com/de6icstca/image/upload/v1706605570/faruqi/portfolio/QuitSzel_1_gh6cy1.png)
+
+
+## Tech Stack
+
+**Client:** Vue 3, Vuex, Vue Router, Vite, TailwindCSS
+
+**Server:** NodeJS
+
+
+## Authors
+
+- [@alfaruqi](https://www.github.com/alfaruqii)
+
