@@ -1,17 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "./views/HomePage.vue"
-import QuitPage from "./views/AddEvents.vue"
+import HomePage from "./views/HomePage.vue"
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: HomePage
   },
   {
     path: "/quit",
     name: "quit",
-    component: QuitPage,
+    component: () => import("./views/AddEvents.vue"),
   },
 ];
 
