@@ -7,3 +7,7 @@
   src: url('/assets/fonts/sf.woff2');
 }
 
+@font-face {
+  font-family: sf-bold;
+  src: url('/assets/fonts/sfbold.woff2');
+}

@@ -11,7 +11,7 @@
         </button>
         </MenuItem>
         <MenuItem v-slot="{ active }">
-        <button :class='{ "bg-gray-100": active }' class="text-left px-3 py-2 rounded"
+        <button :class='{ "bg-gray-100": active }' class="text-left px-3 py-2 rounded flex gap-2 items-center"
           @click.prevent="removeEvent(event.id)">
           <v-icon name="bi-trash3-fill" />
           Delete

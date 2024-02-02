@@ -1,7 +1,7 @@
 <template>
   <div v-if="(dataQuote.quote && dataQuote.author)" class="px-4 sm:w-3/6 sm:mx-auto pb-8  min-h-screen">
-    <div class="border px-6 py-3 w-fit mx-auto mt-4 rounded-lg bg-white shadow">
-      <h1 class="text-xl text-gray-500 mb-2 font-thin">
+    <div class="px-6 py-3 w-fit mx-auto mt-4 rounded-lg shadow-lg bg-[#FE6367] text-white">
+      <h1 class="text-xl mb-2 font-sf-bold">
         Quote of the day
       </h1>
       <p class="font-medium">
@@ -12,14 +12,15 @@
       </p>
     </div>
     <div v-if="eventData.length > 0" class="w-full mt-12 flex flex-col gap-3 ">
-      <p>I commit to quit :</p>
+      <p class="font-sf-bold">I commit to quit :</p>
       <div v-for="(event, index) in eventData" v-if="eventData" :key="index"
-        class="px-4 pt-4 border shadow rounded-lg bg-white relative">
+        class="px-4 pt-4 shadow-lg rounded-lg bg-white relative">
         <DropDown :event="event" />
-        <div class="flex gap-2 items-center mb-3 ">
-          <v-icon class="mb-1"
-            :name="event.eventType === 'Money' ? 'gi-take-my-money' : event.eventType === 'Event' ? 'md-accesstime' : 'io-thumbs-down'" />
-          <p class="text-lg font-bold capitalize">
+        <div class="flex gap-2 items-center mb-2">
+          <v-icon
+            :name="event.eventType === 'Money' ? 'gi-take-my-money' : event.eventType === 'Event' ? 'md-accesstime' : 'io-thumbs-down'"
+            :color="event.eventType === 'Money' ? 'green' : event.eventType === 'Event' ? '#FE6266' : '#edd2a4'" />
+          <p class="text-lg capitalize font-sf-bold">
             {{ event.habit }}
           </p>
         </div>

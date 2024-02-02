@@ -5,7 +5,8 @@ export default {
     extend: {
       fontFamily: {
         "pop": ["Poppins"],
-        "sf": ["sf"]
+        "sf": ["sf"],
+        "sf-bold": ["sf-bold"],
       }
     },
   },

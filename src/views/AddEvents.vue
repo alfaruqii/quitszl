@@ -1,13 +1,13 @@
 <template>
   <form class="mt-4 w-fit mx-4 sm:mx-auto flex flex-col gap-4 min-h-screen">
-    <p>
+    <p class="font-sf-bold">
       Select the type
     </p>
     <div class="flex flex-col gap-4">
-      <label class="border p-3 bg-white rounded-lg shadow flex flex-col gap-4" for="money">
+      <label class="p-3 bg-white rounded-lg shadow-lg flex flex-col gap-4" for="money">
         <div class="flex justify-between">
           <div class="flex gap-1.5 items-center">
-            <v-icon name="gi-take-my-money" scale="1.4" />
+            <v-icon name="gi-take-my-money" scale="1.4" color="green" />
             <label class="font-bold">Money</label>
           </div>
           <input id="money" type="radio" class="" value="Money" v-model="newEvent.eventType">
@@ -15,10 +15,10 @@
         <p class="text-sm text-gray-600">This addiction or bad habit costs you money. For example: smoking, drinking
           alcohol.</p>
       </label>
-      <label class="border p-3 bg-white rounded-lg shadow flex flex-col gap-4" for="time">
+      <label class="p-3 bg-white rounded-lg shadow-lg flex flex-col gap-4" for="time">
         <div class="flex justify-between">
           <div class="flex gap-1.5 items-center">
-            <v-icon name="md-accesstime" scale="1" />
+            <v-icon name="md-accesstime" scale="1" color="#FE6266" />
             <label class="font-bold">Time</label>
           </div>
           <input id="time" type="radio" class="" value="Time" v-model="newEvent.eventType">
@@ -26,10 +26,10 @@
         <p class="text-sm text-gray-600">This habit is a waste of precious time. Example: video games, procrastination.
         </p>
       </label>
-      <label class="border p-3 bg-white rounded-lg shadow flex flex-col gap-4" for="event">
+      <label class="p-3 bg-white rounded-lg shadow-lg flex flex-col gap-4" for="event">
         <div class="flex justify-between">
           <div class="flex gap-1.5 items-center">
-            <v-icon name="io-thumbs-down" scale="1" />
+            <v-icon name="io-thumbs-down" scale="1" color="#edd2a4" />
             <label class="font-bold">Event</label>
           </div>
           <input id="event" type="radio" class="" value="Event" v-model="newEvent.eventType">
@@ -45,7 +45,7 @@
       </label>
       <input type="text" class="border-b border-[#FE6367] ml-3 bg-gray-100 outline-none" v-model="newEvent.habit">
     </div>
-    <button class="border w-fit px-2 py-1 rounded bg-white" @click.prevent="submitForm" :disabled="isFormValid">
+    <button class="shadow border w-fit px-2 py-1 rounded bg-white" @click.prevent="submitForm" :disabled="isFormValid">
       Complete
     </button>
   </form>

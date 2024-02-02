@@ -1,7 +1,7 @@
 <template>
   <Disclosure as="div">
     <DisclosureButton as="div" class="flex gap-2 w-full items-center text-left font-medium outline-none px-3 py-2 ">
-      <v-icon name="md-modeeditoutline" />
+      <v-icon name="md-modeeditoutline" color="#F39C19" />
       <p class="">Rename</p>
     </DisclosureButton>
     <DisclosurePanel as="div" class="px-4 pt-3 pb-3 border-t text-sm">

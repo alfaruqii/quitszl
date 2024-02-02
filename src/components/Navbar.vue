@@ -1,8 +1,8 @@
 <template>
   <div
-    class="flex justify-between sm:justify-around p-4 border-b shadow-sm sticky top-0 bg-[#FE6367] text-gray-100 z-50 items-center">
+    class="flex justify-between sm:justify-around p-4 shadow sticky top-0 bg-[#FE6367] text-gray-100 z-50 items-center">
     <div class="font-black font-pop text-2xl text-white">
-      <router-link to="/" class="flex items-center">
+      <router-link to="/" class="flex items-center" id="navbar-title">
         <v-icon name="gi-breaking-chain" scale="2" />
         QuitSzel
       </router-link>
@@ -14,3 +14,9 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+#navbar-title {
+  letter-spacing: -.02em;
+}
+</style>
