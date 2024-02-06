@@ -8,26 +8,14 @@
 
 <script setup>
 import { ref, onMounted, computed, watchEffect } from 'vue';
+import { baseTime, milestones } from "../utils/elapsedTime"
 
-const props = defineProps(["eventStartDate"]);
+const { eventStartDate } = defineProps(["eventStartDate"]);
 
-const startTime = new Date(props.eventStartDate);
+const startTime = new Date(eventStartDate);
 const progressPercentage = ref(0);
 const milestoneDays = ref(0);
 const svgStyle = ref({});
-
-const milestones = [
-  1 * 24 * 60 * 60 * 1000, // 1 day
-  3 * 24 * 60 * 60 * 1000, // 3 days
-  7 * 24 * 60 * 60 * 1000, // 1 week
-  10 * 24 * 60 * 60 * 1000, // 10 days
-  14 * 24 * 60 * 60 * 1000, // 2 week
-  30 * 24 * 60 * 60 * 1000, // 1 months
-  90 * 24 * 60 * 60 * 1000, // 3 months
-  180 * 24 * 60 * 60 * 1000, // 5 months
-  365 * 24 * 60 * 60 * 1000, // 1 year
-  365 * 5 * 24 * 60 * 60 * 1000, // 5 year
-];
 
 watchEffect(() => {
   const smallSize = window.innerWidth < 768; // Example breakpoint for mobile
@@ -61,7 +49,7 @@ const calculateMilestoneProgress = () => {
     if (elapsed < milestones[i]) {
       nextMilestone = milestones[i];
       currentMilestone = i === 0 ? 0 : milestones[i - 1];
-      milestoneDays.value = nextMilestone / (24 * 60 * 60 * 1000);
+      milestoneDays.value = nextMilestone / (24 * baseTime);
       break;
     }
   }
@@ -69,7 +57,6 @@ const calculateMilestoneProgress = () => {
   const progress = nextMilestone !== currentMilestone ? ((elapsed - currentMilestone) / (nextMilestone - currentMilestone)) * 100 : 0;
   progressPercentage.value = Math.min(progress, 100).toFixed(2); // Round to 2 decimal places
 };
-
 
 onMounted(() => {
   const intervalId = setInterval(() => {

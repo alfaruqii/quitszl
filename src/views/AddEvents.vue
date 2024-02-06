@@ -54,7 +54,7 @@
 <script setup>
 import { computed, reactive } from 'vue';
 import { useMutations } from '../helper';
-import saveEventToLocalStorage from "../utils/saveToLocalStorage.js"
+import { saveEventToLocalStorage } from "../utils/saveToLocalStorage.js"
 import { useRouter } from 'vue-router';
 
 const router = useRouter()

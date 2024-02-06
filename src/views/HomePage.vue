@@ -1,90 +1,11 @@
 <template>
-  <div v-if="(dataQuote.quote && dataQuote.author)" class="px-4 sm:w-3/6 sm:mx-auto pb-8  min-h-screen">
-    <div class="px-6 py-3 w-fit mx-auto mt-4 rounded-lg shadow-lg bg-[#FE6367] text-white">
-      <h1 class="text-xl mb-2 font-sf-bold">
-        Quote of the day
-      </h1>
-      <p class="font-medium">
-        {{ dataQuote.quote }}
-      </p>
-      <p class="text-xs font-thin text-gray-501 mt-1.5">
-        - {{ dataQuote.author }}
-      </p>
-    </div>
-    <div v-if="eventData.length > 0" class="w-full mt-12 flex flex-col gap-3 ">
-      <p class="font-sf-bold">I commit to quit :</p>
-      <div v-for="(event, index) in eventData" v-if="eventData" :key="index"
-        class="px-4 pt-4 shadow-lg rounded-lg bg-white relative">
-        <DropDown :event="event" />
-        <div class="flex gap-2 items-center mb-2">
-          <v-icon
-            :name="event.eventType === 'Money' ? 'gi-take-my-money' : event.eventType === 'Event' ? 'md-accesstime' : 'io-thumbs-down'"
-            :color="event.eventType === 'Money' ? 'green' : event.eventType === 'Event' ? '#FE6266' : '#edd2a4'" />
-          <p class="text-lg capitalize font-sf-bold">
-            {{ event.habit }}
-          </p>
-        </div>
-        <div>
-          <Clock :eventStartDate="event.date.toString()" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div v-else class="flex items-center justify-center min-h-screen">
-    <p>
-      Loading...
-    </p>
+  <div class="px-4 sm:w-3/6 sm:mx-auto pb-8 min-h-screen">
+    <Quote />
+    <Habit />
   </div>
 </template>
 
 <script setup>
-import axios from 'axios';
-import { defineAsyncComponent, onMounted, reactive } from 'vue';
-import { useState } from "../helper.js";
-const Clock = defineAsyncComponent(() => import("../components/Clock.vue"))
-const DropDown = defineAsyncComponent(() => import("../components/DropDown.vue"))
-
-const dataQuote = reactive({ quote: "", author: "" });
-const { eventData } = useState(["eventData"]);
-
-onMounted(() => {
-  getQuotes();
-
-  // Set up an interval to check for day change every hour
-  setInterval(() => {
-    const now = new Date();
-    const currentDay = now.getDate();
-
-    // Get the last fetched day from localStorage
-    const lastFetchDay = parseInt(localStorage.getItem('quoteLastFetchDay')) || 0;
-
-    // If the current day is different from the last fetched day, fetch quotes
-    if (currentDay !== lastFetchDay) {
-      getQuotes();
-    }
-  }, 60 * 60 * 1000); // Check every hour
-});
-
-function getQuotes() {
-  const now = Date.now();
-  const lastFetchTimestamp = localStorage.getItem('quoteLastFetch');
-
-  // Fetch quotes only if last fetch timestamp is not set or a day has passed
-  if (!lastFetchTimestamp) {
-    axios.get("https://api.quotable.io/quotes/random").then((response) => {
-      dataQuote.quote = response.data[0].content;
-      dataQuote.author = response.data[0].author;
-
-      // Store the current timestamp and day in localStorage
-      localStorage.setItem('quoteLastFetch', now);
-      localStorage.setItem('quoteLastFetchDay', new Date().getDate());
-      localStorage.setItem('cachedQuoteContent', response.data[0].content);
-      localStorage.setItem('cachedQuoteAuthor', response.data[0].author);
-    });
-  } else {
-    // Use cached quote from localStorage
-    dataQuote.quote = localStorage.getItem('cachedQuoteContent') || '';
-    dataQuote.author = localStorage.getItem('cachedQuoteAuthor') || '';
-  }
-}
+import Quote from '../components/Quote.vue';
+import Habit from '../components/Habit.vue';
 </script>
