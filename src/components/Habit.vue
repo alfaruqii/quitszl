@@ -15,6 +15,9 @@
       <Clock :eventStartDate="event?.date.toString()" />
     </div>
   </div>
+  <div v-else class="mt-40 text-center font-sf-bold text-gray-400 text-xl">
+    <p>You haven't start any habit</p>
+  </div>
 </template>
 
 <script setup>
