@@ -8,7 +8,7 @@
 
 <script setup>
 import { ref, onMounted, computed, watchEffect } from 'vue';
-import { baseTime, milestones } from "../utils/elapsedTime"
+import { HOUR_MS, milestones } from "../utils/elapsedTime"
 
 const { eventStartDate } = defineProps(["eventStartDate"]);
 
@@ -26,11 +26,10 @@ watchEffect(() => {
 });
 
 const svgCircle = computed(() => {
-  const screenWidth = window.innerWidth
-  const radius = screenWidth < 768 ? 50 : 70; // Choose appropriate values for smaller and larger screens
+  const smallSize = window.innerWidth < 768;
+  const radius = smallSize ? 50 : 70;
   const circumference = 2 * Math.PI * radius;
-  const divider = screenWidth < 768 ? 70 : 100 // Smaller divider for mobile
-  const strokeVal = (circumference / 2 / divider) * progressPercentage.value;
+  const strokeVal = (circumference / 2 / (smallSize ? 70 : 100)) * progressPercentage.value;
   const dashArray = `${strokeVal} ${circumference}`;
 
   return `<svg width="100%" height="100%" viewBox="0 0 200 100">
@@ -49,7 +48,7 @@ const calculateMilestoneProgress = () => {
     if (elapsed < milestones[i]) {
       nextMilestone = milestones[i];
       currentMilestone = i === 0 ? 0 : milestones[i - 1];
-      milestoneDays.value = nextMilestone / (24 * baseTime);
+      milestoneDays.value = nextMilestone / (24 * HOUR_MS);
       break;
     }
   }

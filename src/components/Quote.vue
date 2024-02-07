@@ -23,7 +23,7 @@ import axios from 'axios';
 import { useStorage } from '@vueuse/core';
 import { setLocalStorage } from "../utils/saveToLocalStorage"
 import { onMounted, reactive } from 'vue';
-import { baseTime } from "../utils/elapsedTime"
+import { HOUR_MS } from "../utils/elapsedTime"
 
 const dataQuote = reactive({ quote: "", author: "" });
 onMounted(() => {
@@ -41,7 +41,7 @@ onMounted(() => {
     if (currentDay !== lastFetchDay) {
       getQuotes();
     }
-  }, baseTime); // Check every hour
+  }, HOUR_MS); // Check every hour
 });
 
 function getQuotes() {
