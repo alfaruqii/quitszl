@@ -13,11 +13,20 @@ const routes = [
   },
   {
     path: "/quit",
-    name: "quit",
+    name: "AddEvents",
     component: () => import("./views/AddEvents.vue"),
     meta: {
       enterClass: "animate__animated animate__fadeInRight animate__fast",
       leaveClass: "animate__animated animate__fadeOutLeft animate__fast"
+    }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: "NotFound",
+    component: () => import("./views/NotFound.vue"),
+    meta: {
+      enterClass: "animate__animated animate__fadeInLeft animate__fast",
+      leaveClass: "animate__animated animate__fadeOutRight animate__fast"
     }
   },
 ];
