@@ -1,7 +1,7 @@
 <template>
   <div v-if="eventData.length > 0" class="w-full mt-12 flex flex-col gap-3 ">
     <p class="font-sf-bold">I commit to quit :</p>
-    <div v-for="(event, index) in eventData" v-if="eventData[0]" :key="index"
+    <div v-for="(event, index) in eventData" :v-if="event" :key="index"
       class="px-4 pt-4 shadow-lg rounded-lg bg-white relative">
       <DropDown :event="event" />
       <div class="flex gap-2 items-center mb-2">

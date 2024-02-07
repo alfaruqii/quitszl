@@ -5,12 +5,20 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: HomePage
+    component: HomePage,
+    meta: {
+      enterClass: "animate__animated animate__fadeInLeft animate__fast",
+      leaveClass: "animate__animated animate__fadeOutRight animate__fast"
+    }
   },
   {
     path: "/quit",
     name: "quit",
     component: () => import("./views/AddEvents.vue"),
+    meta: {
+      enterClass: "animate__animated animate__fadeInRight animate__fast",
+      leaveClass: "animate__animated animate__fadeOutLeft animate__fast"
+    }
   },
 ];
 
@@ -20,7 +28,7 @@ const router = createRouter({
   scrollBehavior() {
     return {
       top: 0,
-      behavior: 'smooth',
+      behavior: 'auto',
     }
   }
 });
