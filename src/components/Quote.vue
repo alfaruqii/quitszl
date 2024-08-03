@@ -50,14 +50,7 @@ const getQuotes = async () => {
 
     // Fetch quotes only if last fetch timestamp is not set or a day has passed
     if (!lastFetchTimestamp) {
-      const response = await axios.get(
-        "https://stoic.tekloon.net/stoic-quote",
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
+      const response = await axios.get("https://stoic.tekloon.net/stoic-quote");
       dataQuote.quote = response.data.quote;
       dataQuote.author = response.data.author.length
         ? response.data.author
